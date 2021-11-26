@@ -11,6 +11,9 @@ import axios from "axios";
 import { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router";
 import { MateriasContext } from "../../context/materias";
+import Lottie from "react-lottie"; // import do lotties
+import animationData from "../../lotties/78259-loading.json"; //imagem baixada do lotties
+import { Box } from "@mui/system";
 
 const CadastrarMateria = () => {
 	const MySwal = withReactContent(Swal);
@@ -114,32 +117,42 @@ const CadastrarMateria = () => {
 		setTitulo("");
 		setProfessor_nome("");
 	};
+	
+	const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
 	return (
-		<Form>
-			<InputCadastro
-				id="outlined-basic"
-				label="titulo"
-				//É CRIADO O VALUE PARA FUNCIONAR COM A FUNÇÃO LIMPARCAMPO
-				//PARA RECEBER TBM AQUILO QUE VEM DO ESTADO
-				value={titulo}
-				variant="outlined"
-				onChange={(e) => setTitulo(e.target.value)}
-			/>
-			<InputCadastro
-				id="outlined-basic"
-				label="Professor"
-				//É CRIADO O VALUE PARA FUNCIONAR COM A FUNÇÃO LIMPARCAMPO
-				//PARA RECEBER TBM AQUILO QUE VEM DO ESTADO
-				value={professor_nome}
-				variant="outlined"
-				onChange={(e) => setProfessor_nome(e.target.value)}
-			/>
-			<ButtonCadastro variant="contained" onClick={cadastrar}>
-				{id ? "Editar" : "Cadastrar"}
-			</ButtonCadastro>
-		</Form>
-	);
+    <Box sx={{ marginTop: "25px" }}>
+      {materias.length > 0 ? (
+        <Form>
+          <InputCadastro
+            label="Materia"
+            variant="outlined"
+            value={titulo}
+            onChange={(e) => setTitulo(e.target.value)}
+          />
+          <InputCadastro
+            label="Professor"
+            variant="outlined"
+            value={professor_nome}
+            onChange={(e) => setProfessor_nome(e.target.value)}
+          />
+
+          <ButtonCadastro variant="contained" onClick={cadastrarMaterias}>
+            {id ? "Editar" : "Cadastrar"}
+          </ButtonCadastro>
+        </Form>
+      ) : (
+        <Lottie options={defaultOptions} height={400} width={400} />
+      )}
+    </Box>
+  );
 };
 
 export default CadastrarMateria;
