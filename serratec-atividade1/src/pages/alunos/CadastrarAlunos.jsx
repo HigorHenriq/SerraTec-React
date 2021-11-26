@@ -10,6 +10,9 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useParams } from "react-router";
 import { AlunosContext } from "../../context/alunos";
+import { Box } from "@mui/system";
+import Lottie from "react-lottie"; // import do lotties, qualquer coisa muda pro seu import
+import animationData from "../../lotties/78259-loading.json"; // arquivo baixado do lotties
 
 const CadastrarAlunos = () => {
 	const MySwal = withReactContent(Swal);
@@ -114,33 +117,48 @@ const CadastrarAlunos = () => {
 		setIdade("");
 		setCidade("");
 	};
+	
+	const defaultOptions = { // configuracao padrao do loading do lotties
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
 
 	return (
-		<Form>
-			<InputCadastro
-				label="Nome"
-				variant="outlined"
-				value={nome}
-				onChange={(e) => setNome(e.target.value)}
-			/>
-			<InputCadastro
-				label="Idade"
-				variant="outlined"
-				value={idade}
-				onChange={(e) => setIdade(e.target.value)}
-			/>
-			<InputCadastro
-				label="Cidade"
-				variant="outlined"
-				value={cidade}
-				onChange={(e) => setCidade(e.target.value)}
-			/>
+    <Box sx={{ marginTop: "25px" }}>
+      {alunos.length > 0 ? (
+        <Form>
+          <InputCadastro
+            label="Nome"
+            variant="outlined"
+            value={nome} //pra depois que cadastrar ele colocar valor vazio que vem da funcao liparcampos
+            onChange={(e) => setNome(e.target.value)} //o evento onchange altera os estados
+          />
+          <InputCadastro
+            label="Idade"
+            variant="outlined"
+            value={idade}
+            onChange={(e) => setIdade(e.target.value)}
+          />
+          <InputCadastro
+            label="Cidade"
+            variant="outlined"
+            value={cidade}
+            onChange={(e) => setCidade(e.target.value)}
+          />
 
-			<ButtonCadastro variant="contained" onClick={cadastrarAlunos}>
-				{id ? "Editar" : "Cadastrar"}
-			</ButtonCadastro>
-		</Form>
-	);
+          <ButtonCadastro variant="contained" onClick={cadastrarAlunos}>
+            {id ? "Editar" : "Cadastrar"}
+          </ButtonCadastro>
+        </Form>
+      ) : (
+        <Lottie options={defaultOptions} height={400} width={400} />
+      )}
+    </Box>
+  );
 };
 
 export default CadastrarAlunos;
