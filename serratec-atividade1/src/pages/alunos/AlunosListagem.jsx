@@ -16,7 +16,8 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useNavigate } from "react-router-dom";
 import Stack from "@mui/material/Stack";
-import CircularProgress from "@mui/material/CircularProgress";
+// import CircularProgress from "@mui/material/CircularProgress";
+import LinearProgress from "@mui/material/LinearProgress";
 import { AlunosContext } from "../../context/alunos";
 
 const AlunosListagem = () => {
@@ -115,15 +116,18 @@ const AlunosListagem = () => {
 			</TableContainer>
 		</Box>
 	) : (
-		<>
-			<Stack
-				sx={{ color: "blue", margin: "30vh 30vw" }}
-				spacing={2}
-				direction="row"
-			>
-				<CircularProgress color="secondary" />
-			</Stack>
-		</>
+		// <>
+		// 	{/* <Stack
+		// 		sx={{ color: "blue", margin: "30vh 30vw" }}
+		// 		spacing={2}
+		// 		direction="row"
+		// 	>
+		// 		<CircularProgress color="secondary" />
+		// 	</Stack> */}
+		// </>
+		<Box sx={{ width: "100%" }}>
+			<LinearProgress color="secondary" />
+		</Box>
 	);
 };
 

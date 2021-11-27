@@ -56,7 +56,7 @@ const CadastrarMateria = () => {
 		}
 	};
 
-	const cadastrar = () => {
+	const cadastrarMaterias = () => {
 		//Se caso o aluno já conter ID irá fazer o put **Atualizar**
 		if (id) {
 			axios
@@ -117,42 +117,45 @@ const CadastrarMateria = () => {
 		setTitulo("");
 		setProfessor_nome("");
 	};
-	
+
 	const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+		loop: true,
+		autoplay: true,
+		animationData: animationData,
+		rendererSettings: {
+			preserveAspectRatio: "xMidYMid slice",
+		},
+	};
 
 	return (
-    <Box sx={{ marginTop: "25px" }}>
-      {materias.length > 0 ? (
-        <Form>
-          <InputCadastro
-            label="Materia"
-            variant="outlined"
-            value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
-          />
-          <InputCadastro
-            label="Professor"
-            variant="outlined"
-            value={professor_nome}
-            onChange={(e) => setProfessor_nome(e.target.value)}
-          />
+		<Box sx={{ marginTop: "25px" }}>
+			{materias.length > 0 ? (
+				<Form>
+					<InputCadastro
+						label="Materia"
+						variant="outlined"
+						value={titulo}
+						onChange={(e) => setTitulo(e.target.value)}
+					/>
+					<InputCadastro
+						label="Professor"
+						variant="outlined"
+						value={professor_nome}
+						onChange={(e) => setProfessor_nome(e.target.value)}
+					/>
 
-          <ButtonCadastro variant="contained" onClick={cadastrarMaterias}>
-            {id ? "Editar" : "Cadastrar"}
-          </ButtonCadastro>
-        </Form>
-      ) : (
-        <Lottie options={defaultOptions} height={400} width={400} />
-      )}
-    </Box>
-  );
+					<ButtonCadastro
+						variant="contained"
+						onClick={cadastrarMaterias}
+					>
+						{id ? "Editar" : "Cadastrar"}
+					</ButtonCadastro>
+				</Form>
+			) : (
+				<Lottie options={defaultOptions} height={400} width={400} />
+			)}
+		</Box>
+	);
 };
 
 export default CadastrarMateria;
