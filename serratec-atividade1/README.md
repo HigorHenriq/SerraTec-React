@@ -1,15 +1,18 @@
+_Obs: Estamos utilizando a API em localhost_
+
 # Squad 3 React
 
-## Antonio
+## Antonio Alves
 
-## Diego
+## Diego Faria
 
-## Higor
+## Higor Henrique
 
-## Núria
+## Núria Barbosa
 
-## Victor
+## Victor Hugo
 
+<hr>
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
