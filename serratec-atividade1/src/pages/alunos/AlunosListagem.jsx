@@ -29,11 +29,9 @@ const AlunosListagem = () => {
 	const { alunos, setAlunos } = useContext(AlunosContext);
 
 	useEffect(() => {
-		//Caso não tenha nenhuma att ou nenhum novo aluno ele n irá fazer requisição para a API
-		//Vai estar usando o context
-		if (alunos.length <= 0) {
+	
 			getAlunos();
-		}
+
 	}, []);
 
 	const getAlunos = () => {
