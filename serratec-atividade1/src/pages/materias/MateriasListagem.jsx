@@ -28,9 +28,9 @@ const MateriasListagem = () => {
 	const { materias, setMaterias } = useContext(MateriasContext);
 
 	useEffect(() => {
-		if (materias.length <= 0) {
+
 			getMaterias();
-		}
+
 	}, []);
 
 	// const getMaterias = () => {
